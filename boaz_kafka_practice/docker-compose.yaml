@@ -1,0 +1,28 @@
+# docker-compose.yml (Simple Version)
+version: '3'  # Docker Compose 버전 3 사용
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.1  # Confluent Platform Zookeeper 이미지
+    container_name: zookeeper  # 컨테이너 이름 추가 (필수!)
+    ports:
+      - "2182:2181"  # Zookeeper 외부 접근 포트
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181  # Zookeeper 클라이언트 포트 설정 (필수!)
+      ZOOKEEPER_TICK_TIME: 2000  # Zookeeper 기본 시간 단위
+ 
+  kafka:
+    image: confluentinc/cp-kafka:7.5.1  # Confluent Platform Kafka 이미지
+    container_name: kafka  # 컨테이너 이름 추가
+    depends_on:
+      - zookeeper  # Zookeeper 먼저 시작
+    ports:
+      - "9092:9092"  # Kafka 외부 접근 포트
+    environment:
+      KAFKA_BROKER_ID: 1 # 브로커 ID 설정
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'  # Zookeeper 연결 주소
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT # 리스너 보안 프로토콜 맵
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092  # 외부 클라이언트 접속 주소
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1  # 오프셋 토픽 복제 팩터 (단일 브로커)
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0 # 그룹 초기 재배치 지연 시간
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'  # 토픽 자동 생성 활성화
+      KAFKA_NUM_PARTITIONS: 3 # 파티션 수 설정
