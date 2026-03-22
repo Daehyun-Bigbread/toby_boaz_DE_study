@@ -1,0 +1,11 @@
+services:
+  spark:
+    image: apache/spark:3.5.0
+    container_name: spark-streaming
+    command: tail -f /dev/null
+    ports:
+      - "4040:4040"
+    volumes:
+      - ./app:/app
+    stdin_open: true
+    tty: true
