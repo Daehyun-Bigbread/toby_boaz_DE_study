@@ -1,0 +1,90 @@
+version: "3"
+
+services:
+  # --- Hadoop Ecosystem ---
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    volumes:
+      - ./data/namenode:/hadoop/dfs/name
+    environment:
+      - CLUSTER_NAME=test
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+      - HDFS_CONF_dfs_permissions_enabled=false
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    ports:
+      - "9870:9870" # HDFS Web UI
+      - "9000:9000" # RPC
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    volumes:
+      - ./data/datanode:/hadoop/dfs/data
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+      - HDFS_CONF_dfs_permissions_enabled=false
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    links:
+      - namenode
+
+  resourcemanager:
+    image: bde2020/hadoop-resourcemanager:2.0.0-hadoop3.2.1-java8
+    container_name: resourcemanager
+    ports:
+      - "8088:8088" # YARN Web UI
+    volumes:
+      - ./hadoop-mapreduce-examples-2.7.1.jar:/opt/my-examples.jar
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+      - HDFS_CONF_dfs_permissions_enabled=false
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    links:
+      - namenode
+      - datanode
+
+  nodemanager:
+    image: bde2020/hadoop-nodemanager:2.0.0-hadoop3.2.1-java8
+    container_name: nodemanager
+    environment:
+      - CORE_CONF_fs_defaultFS=hdfs://namenode:9000
+      - CORE_CONF_hadoop_http_staticuser_user=root
+      - HDFS_CONF_dfs_webhdfs_enabled=true
+      - HDFS_CONF_dfs_permissions_enabled=false
+      - YARN_CONF_yarn_resourcemanager_hostname=resourcemanager
+    links:
+      - namenode
+      - datanode
+      - resourcemanager
+
+  # --- Spark Ecosystem (BDE 이미지) ---
+  spark-master:
+    image: bde2020/spark-master:3.1.1-hadoop3.2
+    container_name: spark-master
+    ports:
+      - "8080:8080" # Spark Master Web UI
+      - "7077:7077"
+    environment:
+      - INIT_DAEMON_STEP=setup_spark
+      - "Constraint:Node==namenode" # 연결 보장용
+    volumes:
+      - ./apps:/opt/spark-apps
+    links:
+      - namenode
+
+  spark-worker:
+    image: bde2020/spark-worker:3.1.1-hadoop3.2
+    container_name: spark-worker
+    ports:
+      - "8081:8081"
+    environment:
+      - SPARK_MASTER=spark://spark-master:7077
+    links:
+      - spark-master
+      - namenode

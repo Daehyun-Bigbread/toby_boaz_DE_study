@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dying-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dying-server
+  template:
+    metadata:
+      labels:
+        app: dying-server
+    spec:
+      containers:
+      - name: dying-server
+        image: dying-server:latest
+        imagePullPolicy: Never   # 로컬 이미지 사용
+

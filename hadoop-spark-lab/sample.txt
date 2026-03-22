@@ -1,0 +1,7 @@
+Hello BOAZ
+Welcome to BOAZ
+Hello Hadoop
+Hello Spark
+Big Data World
+Hadoop is fun
+Spark is fast

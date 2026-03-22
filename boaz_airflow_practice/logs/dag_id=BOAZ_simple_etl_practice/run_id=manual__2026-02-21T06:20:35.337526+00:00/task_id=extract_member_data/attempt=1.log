@@ -1,0 +1,24 @@
+[2026-02-21T06:20:36.651+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.extract_member_data manual__2026-02-21T06:20:35.337526+00:00 [queued]>
+[2026-02-21T06:20:36.659+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.extract_member_data manual__2026-02-21T06:20:35.337526+00:00 [queued]>
+[2026-02-21T06:20:36.659+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:20:36.659+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2026-02-21T06:20:36.659+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:20:36.669+0000] {taskinstance.py:1300} INFO - Executing <Task(_PythonDecoratedOperator): extract_member_data> on 2026-02-21 06:20:35.337526+00:00
+[2026-02-21T06:20:36.672+0000] {standard_task_runner.py:55} INFO - Started process 577 to run task
+[2026-02-21T06:20:36.676+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'BOAZ_simple_etl_practice', 'extract_member_data', 'manual__2026-02-21T06:20:35.337526+00:00', '--job-id', '16', '--raw', '--subdir', 'DAGS_FOLDER/boaz_simple_etl.py', '--cfg-path', '/tmp/tmp2xw34_pq']
+[2026-02-21T06:20:36.676+0000] {standard_task_runner.py:83} INFO - Job 16: Subtask extract_member_data
+[2026-02-21T06:20:36.737+0000] {task_command.py:388} INFO - Running <TaskInstance: BOAZ_simple_etl_practice.extract_member_data manual__2026-02-21T06:20:35.337526+00:00 [running]> on host 4978ee012e2b
+[2026-02-21T06:20:36.789+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=BOAZ
+AIRFLOW_CTX_DAG_ID=BOAZ_simple_etl_practice
+AIRFLOW_CTX_TASK_ID=extract_member_data
+AIRFLOW_CTX_EXECUTION_DATE=2026-02-21T06:20:35.337526+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2026-02-21T06:20:35.337526+00:00
+[2026-02-21T06:20:36.790+0000] {logging_mixin.py:137} INFO - 📥 수집 완료: 데이터 (기본 점수: 61)
+[2026-02-21T06:20:36.790+0000] {python.py:177} INFO - Done. Returned value was: {'name': '데이터', 'score': 61}
+[2026-02-21T06:20:36.802+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=BOAZ_simple_etl_practice, task_id=extract_member_data, execution_date=20260221T062035, start_date=20260221T062036, end_date=20260221T062036
+[2026-02-21T06:20:36.818+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2026-02-21T06:20:36.838+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check

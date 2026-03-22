@@ -1,0 +1,24 @@
+[2026-02-21T06:21:06.866+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.load_result manual__2026-02-21T06:21:04.019706+00:00 [queued]>
+[2026-02-21T06:21:06.871+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.load_result manual__2026-02-21T06:21:04.019706+00:00 [queued]>
+[2026-02-21T06:21:06.871+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:21:06.871+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2026-02-21T06:21:06.872+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:21:06.878+0000] {taskinstance.py:1300} INFO - Executing <Task(_PythonDecoratedOperator): load_result> on 2026-02-21 06:21:04.019706+00:00
+[2026-02-21T06:21:06.880+0000] {standard_task_runner.py:55} INFO - Started process 638 to run task
+[2026-02-21T06:21:06.882+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'BOAZ_simple_etl_practice', 'load_result', 'manual__2026-02-21T06:21:04.019706+00:00', '--job-id', '24', '--raw', '--subdir', 'DAGS_FOLDER/boaz_simple_etl.py', '--cfg-path', '/tmp/tmpzluvgice']
+[2026-02-21T06:21:06.882+0000] {standard_task_runner.py:83} INFO - Job 24: Subtask load_result
+[2026-02-21T06:21:06.918+0000] {task_command.py:388} INFO - Running <TaskInstance: BOAZ_simple_etl_practice.load_result manual__2026-02-21T06:21:04.019706+00:00 [running]> on host 4978ee012e2b
+[2026-02-21T06:21:06.955+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=BOAZ
+AIRFLOW_CTX_DAG_ID=BOAZ_simple_etl_practice
+AIRFLOW_CTX_TASK_ID=load_result
+AIRFLOW_CTX_EXECUTION_DATE=2026-02-21T06:21:04.019706+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2026-02-21T06:21:04.019706+00:00
+[2026-02-21T06:21:06.956+0000] {logging_mixin.py:137} INFO - 💾 [결과] 보아즈님 / 최종 점수: 129 / 등급: 🔥🐘 우수 활동자
+[2026-02-21T06:21:06.956+0000] {python.py:177} INFO - Done. Returned value was: None
+[2026-02-21T06:21:06.960+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=BOAZ_simple_etl_practice, task_id=load_result, execution_date=20260221T062104, start_date=20260221T062106, end_date=20260221T062106
+[2026-02-21T06:21:06.979+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2026-02-21T06:21:06.989+0000] {taskinstance.py:2578} INFO - 0 downstream tasks scheduled from follow-on schedule check

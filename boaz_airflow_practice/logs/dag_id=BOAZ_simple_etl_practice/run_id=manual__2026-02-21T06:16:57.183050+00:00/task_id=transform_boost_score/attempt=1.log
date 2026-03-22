@@ -1,0 +1,24 @@
+[2026-02-21T06:16:59.291+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.transform_boost_score manual__2026-02-21T06:16:57.183050+00:00 [queued]>
+[2026-02-21T06:16:59.297+0000] {taskinstance.py:1083} INFO - Dependencies all met for <TaskInstance: BOAZ_simple_etl_practice.transform_boost_score manual__2026-02-21T06:16:57.183050+00:00 [queued]>
+[2026-02-21T06:16:59.297+0000] {taskinstance.py:1279} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:16:59.297+0000] {taskinstance.py:1280} INFO - Starting attempt 1 of 2
+[2026-02-21T06:16:59.298+0000] {taskinstance.py:1281} INFO - 
+--------------------------------------------------------------------------------
+[2026-02-21T06:16:59.305+0000] {taskinstance.py:1300} INFO - Executing <Task(_PythonDecoratedOperator): transform_boost_score> on 2026-02-21 06:16:57.183050+00:00
+[2026-02-21T06:16:59.307+0000] {standard_task_runner.py:55} INFO - Started process 229 to run task
+[2026-02-21T06:16:59.309+0000] {standard_task_runner.py:82} INFO - Running: ['***', 'tasks', 'run', 'BOAZ_simple_etl_practice', 'transform_boost_score', 'manual__2026-02-21T06:16:57.183050+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/boaz_simple_etl.py', '--cfg-path', '/tmp/tmpjipftgv2']
+[2026-02-21T06:16:59.310+0000] {standard_task_runner.py:83} INFO - Job 14: Subtask transform_boost_score
+[2026-02-21T06:16:59.348+0000] {task_command.py:388} INFO - Running <TaskInstance: BOAZ_simple_etl_practice.transform_boost_score manual__2026-02-21T06:16:57.183050+00:00 [running]> on host 4978ee012e2b
+[2026-02-21T06:16:59.391+0000] {taskinstance.py:1509} INFO - Exporting the following env vars:
+AIRFLOW_CTX_DAG_OWNER=BOAZ
+AIRFLOW_CTX_DAG_ID=BOAZ_simple_etl_practice
+AIRFLOW_CTX_TASK_ID=transform_boost_score
+AIRFLOW_CTX_EXECUTION_DATE=2026-02-21T06:16:57.183050+00:00
+AIRFLOW_CTX_TRY_NUMBER=1
+AIRFLOW_CTX_DAG_RUN_ID=manual__2026-02-21T06:16:57.183050+00:00
+[2026-02-21T06:16:59.391+0000] {logging_mixin.py:137} INFO - 가공 완료!: {'name': '엔지니어링', 'final_score': 108, 'is_vip': True}
+[2026-02-21T06:16:59.392+0000] {python.py:177} INFO - Done. Returned value was: {'name': '엔지니어링', 'final_score': 108, 'is_vip': True}
+[2026-02-21T06:16:59.402+0000] {taskinstance.py:1323} INFO - Marking task as SUCCESS. dag_id=BOAZ_simple_etl_practice, task_id=transform_boost_score, execution_date=20260221T061657, start_date=20260221T061659, end_date=20260221T061659
+[2026-02-21T06:16:59.448+0000] {local_task_job.py:208} INFO - Task exited with return code 0
+[2026-02-21T06:16:59.465+0000] {taskinstance.py:2578} INFO - 1 downstream tasks scheduled from follow-on schedule check
