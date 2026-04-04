@@ -1,0 +1,13 @@
+services:
+  spark:
+    build: .
+    container_name: spark-ml-container
+    ports:
+      - "8080:8080"    # Spark Master UI
+      - "4040:4040"    # Spark Application UI
+      - "9999:9999"    # Socket for streaming data
+    volumes:
+      - ./app:/app     # 로컬 app 디렉토리를 컨테이너와 동기화
+    stdin_open: true
+    tty: true
+    command: /bin/bash
