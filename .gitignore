@@ -5,3 +5,4 @@ env/
 
 # Environment variables & secrets
 .env
+.cursor/commands/auto-commit.md
